@@ -1,26 +1,325 @@
+/* style.css - Versión Profesional */
+:root {
+    --bg-light: #f5f7fa;
+    --bg-dark: #121826;
+    --card-light: #ffffff;
+    --card-dark: #1e293b;
+    --text-light: #2c3e50;
+    --text-dark: #f1f5f9;
+    --primary: #4A90E2;
+    --danger: #e74c3c;
+    --success: #2ecc71;
+    --shadow: 0 8px 30px rgba(0,0,0,0.08);
+    --shadow-dark: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f0f8ff;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.4s ease;
 }
+
+body.light-mode {
+    background: linear-gradient(135deg, var(--bg-light) 0%, #c3cfe2 100%);
+    color: var(--text-light);
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #0f172a 100%);
+    color: var(--text-dark);
+}
+
 .container {
-    max-width: 500px;
-    margin: 0 auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-input, button {
+    max-width: 600px;
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background: var(--card-light);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transition: all 0.4s ease;
 }
-#result {
-    margin-top: 20px;
-    padding: 15px;
+
+body.dark-mode .container {
+    background: var(--card-dark);
+    box-shadow: var(--shadow-dark);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 2.3rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 25px;
+    opacity: 0.8;
+    font-size: 1.05rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.input-group input,
+.input-group button {
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.input-group input {
+    flex: 1;
+    background: #f0f4f8;
+    color: var(--text-light);
+}
+
+body.dark-mode .input-group input {
+    background: #334155;
+    color: var(--text-dark);
+}
+
+.input-group button {
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    min-width: 100px;
+}
+
+.input-group button:hover {
+    background: #3a7bd5;
+    transform: translateY(-2px);
+}
+
+.quick-cities {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+.quick-cities button {
+    background: #e2e8f0;
+    border: none;
+    padding: 6px 12px;
+    margin: 0 4px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.quick-cities button:hover {
+    background: #cbd5e1;
+}
+
+body.dark-mode .quick-cities button {
+    background: #334155;
+    color: white;
+}
+
+body.dark-mode .quick-cities button:hover {
+    background: #475569;
+}
+
+#result, #forecast, #history {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 16px;
+    animation: fadeIn 0.5s ease;
+}
+
+body.light-mode #result,
+body.light-mode #forecast,
+body.light-mode #history {
     background: #e6f7ff;
-    border-radius: 5px;
+    border-left: 5px solid var(--primary);
+}
+
+body.dark-mode #result,
+body.dark-mode #forecast,
+body.dark-mode #history {
+    background: #1e293b;
+    border-left: 5px solid var(--primary);
+}
+
+.weather-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.weather-icon {
+    width: 60px;
+    height: 60px;
+}
+
+.weather-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 1.05rem;
+}
+
+.weather-item svg {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.forecast-title {
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.forecast-cards {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.forecast-card {
+    min-width: 100px;
+    padding: 15px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 12px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+body.dark-mode .forecast-card {
+    background: rgba(30,41,59,0.7);
+}
+
+.error {
+    color: var(--danger);
+    background: #fadbd8;
+    border-left: 5px solid var(--danger);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+body.dark-mode .error {
+    background: #4a1d1d;
+    color: #f8d7da;
+}
+
+.history-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 100;
+    background: rgba(255,255,255,0.8);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .theme-toggle {
+    background: rgba(30,41,59,0.9);
+    color: white;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .input-group {
+        flex-direction: column;
+    }
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+    h1 {
+        font-size: 1.9rem;
+    }
+}
+/* Footer Profesional */
+.app-footer {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    text-align: center;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+body.dark-mode .app-footer {
+    border-top-color: rgba(255,255,255,0.1);
+    color: #94a3b8;
+}
+
+.footer-copy {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-light);
+}
+
+body.dark-mode .footer-copy {
+    color: var(--text-dark);
+}
+
+.footer-links a,
+.footer-note a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.footer-links a:hover,
+.footer-note a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.footer-links {
+    margin: 8px 0;
+}
+
+.footer-note {
+    margin-top: 10px;
+    font-style: italic;
 }

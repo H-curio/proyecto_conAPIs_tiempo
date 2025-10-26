@@ -2,18 +2,58 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Clima en Tiempo Real</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="SevillaWeather Pro: Clima en tiempo real con pronóstico, consejos inteligentes y diseño moderno." />
+    <meta property="og:title" content="🌤️ SevillaWeather Pro" />
+    <meta property="og:description" content="Tu asistente climático localizado e inteligente." />
+    <meta property="og:image" content="https://i.imgur.com/placeholder.png" />
+    <title>🌤️ SevillaWeather Pro</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌤️</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body class="light-mode">
+    <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
     <div class="container">
-        <h1>🌤️ Clima en Tiempo Real</h1>
-        <input type="text" id="cityInput" placeholder="Ingresa una ciudad">
-        <button onclick="getWeather()">Buscar Clima</button>
+        <h1>🌤️ SevillaWeather Pro</h1>
+        <p class="subtitle">Clima en tiempo real con consejos inteligentes</p>
+
+        <div class="input-group">
+            <input type="text" id="cityInput" placeholder="Ej: Sevilla, Madrid, Barcelona..." />
+            <button onclick="getWeather()">Buscar</button>
+        </div>
+
+        <div class="quick-cities">
+            <span>¿Prisa? Prueba: </span>
+            <button onclick="quickSearch('Sevilla')">Sevilla</button>
+            <button onclick="quickSearch('Madrid')">Madrid</button>
+            <button onclick="quickSearch('Barcelona')">Barcelona</button>
+        </div>
+
         <div id="result"></div>
+        <div id="forecast"></div>
+        <div id="history"></div>
     </div>
+    <!-- Footer Profesional -->
+    <footer class="app-footer">
+        <p class="footer-copy">
+            🌤️ <strong>SevillaWeather Pro</strong> — Porque saber qué tiempo hace no es solo un dato, es una decisión.
+        </p>
+        <p class="footer-links">
+            Desarrollado por <a href="https://github.com/https:/github.com/H-curio" target="_blank">Miguel Angel L.A</a>
+            | <a href="https:/www.linkedin.com/in/miguel-angel-lira-acosta-666651382" target="_blank">LinkedIn</a>
+            | <a href="https://h-curio.github.io/" target="_blank">Portafolio</a>
+        </p>
+        <p class="footer-note">
+            Datos en tiempo real gracias a <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap</a>.
+        </p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 
